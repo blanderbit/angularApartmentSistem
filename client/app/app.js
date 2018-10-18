@@ -8,7 +8,7 @@ import 'normalize.css';
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
   ])
   .config(($locationProvider) => {
     "ngInject";
@@ -17,4 +17,5 @@ angular.module('app', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 
-  .component('app', AppComponent);
+  .component('app', AppComponent)
+
