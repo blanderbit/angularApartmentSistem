@@ -1,3 +1,35 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
+<div class="Login">
+  <div class="containerform">
+    <div class="form">
+      <form class="login-form">
+        <h3>Autorization</h3>
+        <input type="text" ng-model="vm.emails" placeholder="Email"
+               ng-style="{border:vm.emailRequire==0?'1px solid white':'1px solid red'}"/><br>
+        <input type="password" ng-model="vm.password"
+               ng-style="{border:vm.passwordRequire==0?'1px solid white':'1px solid red'}" placeholder="Password"/>
+        <button ng-click="vm.signIn()" ng-style="{background:vm.button == 0?'royalblue':'red'}">
+          <span ng-if="vm.loading == true?false:true">Login</span>
+          <!--<div class="spinnerLoginRagistration" ng-if="loading == true?true:false"></div>-->
+        </button>
+        <p class="message">
+          Not registred?
+          <a href="#">
+            Create account
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="allErrors" ng-style="{opacity:vm.allEroors==0?'0':'1'}">
+  <ul>
+    <li ng-repeat="one in vm.error">
+      {{one}}
+    </li>
+  </ul>
+</div>
+<div class="modallogin" ng-show="vm.ok==0?false:true">
+  <div>
+    You are longed in
+  </div>
 </div>

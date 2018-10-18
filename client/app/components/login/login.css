@@ -6,6 +6,9 @@
   background: white;
   z-index: 2000;
   transition: all 1s;
+  width: 100vw;
+  height: 100vh;
+  font-size: 30px;
 }
 .Login{
   position: absolute;
