@@ -1,0 +1,41 @@
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="vm.open()" aria-label="Settings">
+          <i class="material-icons">
+            dehaze
+          </i>
+        </md-button>
+
+        <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>
+        <md-button class="md-icon-button" aria-label="More">
+          <i class="material-icons">
+            format_list_bulleted
+          </i>
+        </md-button>
+    </div>
+</md-toolbar>
+<div layout="column"  class="sidenavdemoDisableCloseEvents" ng-click="vm.close()">
+
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events="">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Disabled Close Events</h1>
+      </md-toolbar>
+
+      <md-content layout-margin="">
+        <p>
+          This sidenav is showing the backdrop, but users can't close the
+          sidenav by clicking on the backdrop or pressing the 'Escape' key.
+        </p>
+        <md-button class="md-accent">
+          Close this Sidenav
+        </md-button>
+      </md-content>
+
+    </md-sidenav>
+  </section>
+</div>
+
+
