@@ -1,27 +1,27 @@
-<md-toolbar class="md-hue-2">
+<md-toolbar class="md-hue-2" style="position: fixed;">
     <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" ng-click="vm.open()" aria-label="Settings">
+        <md-button class="md-icon-button" ng-click="vm.open('closeEventsDisabled')" aria-label="Settings">
           <i class="material-icons">
             dehaze
           </i>
         </md-button>
 
         <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>
-        <md-button class="md-icon-button" aria-label="More">
+        <md-button class="md-icon-button" aria-label="More" ng-click="vm.open('right')">
           <i class="material-icons">
             format_list_bulleted
           </i>
         </md-button>
     </div>
 </md-toolbar>
-<div layout="column"  class="sidenavdemoDisableCloseEvents" ng-click="vm.close()">
+<div layout="column"  class="sidenavdemoDisableCloseEvents" ng-click="vm.close('closeEventsDisabled')">
 
   <section layout="row" flex="">
 
     <md-sidenav class="md-sidenav-left" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events="">
 
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Disabled Close Events</h1>
+        <h1 class="md-toolbar-tools">PanelNavigation</h1>
       </md-toolbar>
 
       <md-content layout-margin="">
@@ -37,5 +37,21 @@
     </md-sidenav>
   </section>
 </div>
+
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+
+    <md-toolbar class="md-theme-light">
+        <!--<h1 class="md-toolbar-tools"></h1>-->
+    </md-toolbar>
+    <md-content layout-padding="">
+        <form>
+            <md-input-container>
+                <label for="testInput">Test input</label>
+                <input type="text" id="testInput" ng-model="data" md-sidenav-focus="">
+            </md-input-container>
+        </form>
+    </md-content>
+
+</md-sidenav>
 
 

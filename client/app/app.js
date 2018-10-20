@@ -13,8 +13,8 @@ angular.module('app', [
     uiRouter,
     Common,
     Components,
-  ngMaterial,
-  ngMessages
+      ngMaterial,
+      ngMessages
   ])
   .config(($locationProvider) => {
     "ngInject";

@@ -3,6 +3,7 @@ import controller from './home.controller';
 import './home.scss';
 
 let homeComponent = {
+  controllerAs:'vm',
   bindings: {},
   template,
   controller
