@@ -1,6 +1,9 @@
 class FooterController {
-  constructor() {
-    this.name = 'footer';
+  constructor($http) {
+    'ngInject';
+  }
+  to(){
+
   }
 }
 

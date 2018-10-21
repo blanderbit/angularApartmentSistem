@@ -18,21 +18,17 @@
 
   <section layout="row" flex="">
 
-    <md-sidenav class="md-sidenav-left" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events="">
+    <md-sidenav class="md-sidenav-left" style="overflow-x: hidden" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events="">
 
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">PanelNavigation</h1>
+        <h1 class="md-toolbar-tools">Panel navigation</h1>
       </md-toolbar>
 
-      <md-content layout-margin="">
-        <p>
-          This sidenav is showing the backdrop, but users can't close the
-          sidenav by clicking on the backdrop or pressing the 'Escape' key.
-        </p>
-        <md-button class="md-accent">
-          Close this Sidenav
-        </md-button>
-      </md-content>
+      <div style="display: flex;flex-direction: column">
+          <md-button class="md-primary" ng-repeat="one in vm.lists">
+              {{one}}
+          </md-button>
+      </div>
 
     </md-sidenav>
   </section>
@@ -41,15 +37,25 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
 
     <md-toolbar class="md-theme-light">
-        <!--<h1 class="md-toolbar-tools"></h1>-->
+        <h1 class="md-toolbar-tools">User panel</h1>
     </md-toolbar>
     <md-content layout-padding="">
-        <form>
-            <md-input-container>
-                <label for="testInput">Test input</label>
-                <input type="text" id="testInput" ng-model="data" md-sidenav-focus="">
-            </md-input-container>
-        </form>
+        <div style="display: flex;flex-direction: column">
+            <div style="background-image: url('https://im9.kommersant.ru/CorpImages/Authors/2_!no_photo_m_4.png');
+            background-size: cover;align-self: center;width: 60px;height:60px;border: 1px solid lightgrey; border-radius: 50%"></div>
+            <md-button class="md-primary" ng-click="vm.to('registration')" >
+                Registration
+            </md-button>
+            <md-button class="md-primary" ng-click="vm.to('login')">
+                Login
+            </md-button>
+            <md-button class="md-primary" >
+                To advertise
+            </md-button>
+            <md-button class="md-primary" >
+                Log Out
+            </md-button>
+        </div>
     </md-content>
 
 </md-sidenav>

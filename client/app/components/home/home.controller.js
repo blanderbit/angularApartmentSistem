@@ -20,12 +20,14 @@ var wDelta = 120;
 // }
 
 class HomeController {
-    constructor($http,$timeout,$location,$state) {
+    constructor($http,$timeout,$location,$state,$stateParams) {
         'ngInject';
         this.$state = $state;
         this.$http = $http;
         this.posts_arr = null;
         this.loading = false;
+        this.$location = $location;
+        this.$stateParams = $stateParams;
         this.getPosts();
     }
     getPosts(){
@@ -47,8 +49,12 @@ class HomeController {
     }
 
 
-    to(){
-      console.log(this.$state.go('login'))
+    to(value){
+        // console.log(this.$state.href('posts-id',{id: value}))
+        // console.log(this.$state)
+        // console.log(this.$state.go('/posts/',{id: value},{reload: true}))
+        // console.log(this.)
+        console.log(this.$location.path('/posts/'+value))
     }
 }
 
