@@ -6,7 +6,7 @@
         <div style="display: flex;flex-wrap: wrap;justify-content: flex-start">
             <td style="flex: 1 1 auto;" ng-repeat="tone in item.time">
                <md-button style="cursor: pointer"
-                          ng-click="vm.showConfirm($event,tone)"
+                          ng-click="vm.showConfirm($event,tone,item.color)"
                           ng-class="{active:vm.infOrder(tone,item.color)}" class="md-raised md-primary">
                  {{ tone }}
                </md-button>

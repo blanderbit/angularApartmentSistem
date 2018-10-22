@@ -56,15 +56,17 @@ class HeroController {
           && this.mainArr[i].name == name
           && this.mainArr[i].user == sessionStorage.getItem('idUser')
           && this.mainArr[i].order == this.idOrder) {
+
           return true;
         }
       }
     }
   }
 
-  sent(time,obj) {
-    console.log(time,obj)
-    let active = event.currentTarget.classList.contains('active')
+  sent(time,obj,active) {
+    if(active == undefined){
+      return
+    }
     if (active == true) {
       let position = this.remove(obj, time)
       this.mainArr.splice(position, 1)
@@ -73,7 +75,6 @@ class HeroController {
       this.mainArr.push(obj)
       localStorage.setItem('arrOrders', JSON.stringify(this.mainArr))
     }
-
   }
 
   remove(value) {
@@ -98,7 +99,8 @@ class HeroController {
     }
   }
 
-  showConfirm(ev,time) {
+  showConfirm(ev,time,name) {
+    console.log(name)
     let sentData = this.dates(time)
     let obj = {
       data: String(sentData),
@@ -106,7 +108,8 @@ class HeroController {
       order: this.idOrder,
       user: sessionStorage.getItem('idUser')
     }
-
+    let active = event.currentTarget.classList.contains('active')
+    let count = 0
     let comfirm = this.$mdDialog.confirm()
       .title('you want confirm your order?')
       .textContent('This is your data'+ JSON.stringify(obj))
@@ -114,10 +117,12 @@ class HeroController {
       .targetEvent(ev)
       .ok('True',this.sent(time,obj))
       .cancel('Back')
-
-      this.$mdDialog.show(comfirm)
-      console.log(this.$mdDialog)
+      this.$mdDialog.show(comfirm).then( () =>{
+        this.sent(time,obj,active)
+      },function(){
+      })
   }
+
 }
 
 export default HeroController;
