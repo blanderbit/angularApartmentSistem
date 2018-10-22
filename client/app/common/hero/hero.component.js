@@ -1,8 +1,9 @@
 import template from './hero.html';
 import controller from './hero.controller';
-import './hero.scss';
+import './hero.css';
 
 let heroComponent = {
+  controllerAs:'vm',
   bindings: {},
   template,
   controller

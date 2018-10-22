@@ -49,12 +49,15 @@ class HomeController {
     }
 
 
-    to(value){
+    to(id,street,photo){
+        localStorage.setItem('id_post',id)
+        localStorage.setItem('street_post',street)
+        localStorage.setItem('photo_post',photo)
         // console.log(this.$state.href('posts-id',{id: value}))
         // console.log(this.$state)
         // console.log(this.$state.go('/posts/',{id: value},{reload: true}))
         // console.log(this.)
-        console.log(this.$location.path('/posts/'+value))
+        console.log(this.$location.path('/posts/'+id))
     }
 }
 

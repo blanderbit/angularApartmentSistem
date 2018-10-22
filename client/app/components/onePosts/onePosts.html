@@ -1,3 +1,62 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
-</div>
+<toolbar></toolbar>
+<section style="
+        padding-top: 60px;
+        display: flex;
+        background: white;
+        width: 100vw;
+        justify-content: center;
+        min-height: calc(100vh - 64px);">
+  <div style="width: 100%;max-width: 1000px;">
+      <md-card style="align-self: flex-start">
+          <div ng-style="{backgroundImage:'url('+vm.showUrlPhoto(vm.photo_post)+')'}"
+           style="flex: 1 1 auto;width: 100%;height: 400px;background-position: center center;background-size: cover"></div>
+          <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{vm.street_post}}</span>
+              </md-card-title-text>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="start center">
+              <md-card-icon-actions>
+                  <md-button class="md-icon-button" aria-label="Favorite">
+                  <!--<md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>-->
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Share">
+                  <!--<md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>-->
+                  </md-button>
+              </md-card-icon-actions>
+              <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button>
+          </md-card-actions>
+          <md-card-content>
+
+                  <md-content layout="column" layout-gt-sm="row"
+                              layout-padding style="flex-direction: column">
+                      <div style="display: flex;justify-content: space-between;">
+                        <md-datepicker ng-model="vm.startDate" ng-change="vm.changeData()"
+                                       md-placeholder="Enter date"></md-datepicker>
+                        Date: {{vm.startDate | date:shortDate}}
+                      </div>
+                      <hero></hero>
+                      <div layout="column" style="width: 100%;" flex-order="0" flex-order-gt-sm="2">
+                          <h4 style="text-align: center">
+                            Ordering Rules
+                          </h4>
+                          <p style="padding: 0 20px">
+                            You can acquire statistical information by completing an ORDER (request) and signing a contract for the provision of information and statistical services.
+                          </p>
+                          <p style="padding:0 20px ">
+                            YOUR ORDER (request) must be issued on letterhead and contain:
+                          </p>
+                          <ul style="list-style: decimal">
+                            <li ng-repeat="list in vm.lists">{{list}}</li>
+                          </ul>
+                      </div>
+
+                  </md-content>
+          </md-card-content>
+      </md-card>
+  </div>
+
+</section>
+<footer></footer>
+<md-dialog aria-label="showConfirm"></md-dialog>

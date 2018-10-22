@@ -1,7 +1,6 @@
 class LoginController {
-    constructor(asdf,$http,$timeout,$location) {
+    constructor($http,$timeout,$location) {
         'ngInject';
-        this.resultService = asdf;
         this.emails = '';
         this.password = '',
         this.$http = $http,
@@ -25,8 +24,6 @@ class LoginController {
         } else {
             this.sent()
         }
-        //service
-        // this.resultService.getResults();
         this.setTime()
     }
     sent(){

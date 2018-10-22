@@ -7,19 +7,25 @@
         flex-direction: column;
         min-height: calc(100vh - 181px);">
     <div style="display: flex;flex-wrap: wrap;flex-grow: 3;justify-content: flex-start">
-        <md-card ng-repeat="one in vm.posts_arr" style="width:33%;margin:0;background: none;box-shadow: none" ng-click="vm.to(one.id)">
+        <md-card ng-repeat="one in vm.posts_arr" style="width:20%;margin:0;background: none;box-shadow: none"
+                 ng-click="vm.to(one.id,one.street,one.photo_url)">
             <div style="flex: 1 1 auto;margin:5px;background: white;box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12)">
                 <div ng-style="{backgroundImage:'url('+vm.showUrlPhoto(one.photo_url)+')'}"
                      style="flex: 1 1 auto;width: 100%;height: 200px;background-position: center center;background-size: cover"></div>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">Street</span> {{one.street}}
+                        <div style="display: flex;flex-direction: column">
+                          <span class="md-headline">Street</span> {{one.street}}
+                        </div>
+                        <div>
+
+                        </div>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
                     <p>
-                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                        <!--The titles of Washed Out's breakthrough song and the first single from Paracosm share the-->
+                        <!--two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...-->
                     </p>
                 </md-card-content>
             </div>

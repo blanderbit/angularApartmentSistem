@@ -1,4 +1,17 @@
-<section class="hero">
-  <h1>This is the NG6 starter</h1>
-  <h3>You can find me inside {{ $ctrl.name }}.html</h3>
-</section>
+<table>
+    <tr ng-repeat="item in vm.apartment">
+        <td style="width: 170px" ng-style="{color:item.color}">
+          {{ item.name }}<span>{{ item.inf }}</span>
+        </td>
+        <div style="display: flex;flex-wrap: wrap;justify-content: flex-start">
+            <td style="flex: 1 1 auto;" ng-repeat="tone in item.time">
+               <md-button style="cursor: pointer"
+                          ng-click="vm.showConfirm($event,tone)"
+                          ng-class="{active:vm.infOrder(tone,item.color)}" class="md-raised md-primary">
+                 {{ tone }}
+               </md-button>
+            </td>
+        </div>
+    </tr>
+</table>
+

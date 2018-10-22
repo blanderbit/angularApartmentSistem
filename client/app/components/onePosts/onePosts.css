@@ -1,0 +1,12 @@
+.show-to-380{
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .show-to-380{
+    display: block;
+  }
+  .show-to-before-380{
+    display: none;
+  }
+}
