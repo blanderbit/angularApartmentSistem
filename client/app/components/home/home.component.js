@@ -1,6 +1,6 @@
 import template from './home.html';
 import controller from './home.controller';
-import './home.scss';
+import './home.css';
 
 let homeComponent = {
   controllerAs:'vm',

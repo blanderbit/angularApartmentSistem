@@ -1,7 +1,6 @@
 class RegistrationController {
-  constructor(asdf,$http,$timeout,$location) {
-      'ngInject';
-      this.resultService = asdf;
+  constructor($http,$timeout,$location) {
+      'ngInject';;
       this.$http = $http,
       this.$timeout = $timeout,
       this.emails = '';
@@ -16,6 +15,12 @@ class RegistrationController {
       this.nameRequire = 0,
       this.button = 0,
       this.loading = false
+    this.created()
+  }
+  created(){
+    if(sessionStorage.getItem('token') != null){
+      this.$location.path('/home')
+    }
   }
   create(value){
       this.error = []

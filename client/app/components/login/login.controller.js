@@ -2,17 +2,23 @@ class LoginController {
     constructor($http,$timeout,$location) {
         'ngInject';
         this.emails = '';
-        this.password = '',
-        this.$http = $http,
-        this.$timeout = $timeout,
-        this.error = [],
-        this.allEroors = 0,
-        this.ok = 0,
-        this.$location = $location,
-        this.passwordRequire = 0,
-        this.emailRequire=0,
-        this.button = 0,
-        this.loading = false
+        this.password = '';
+        this.$http = $http;
+        this.$timeout = $timeout;
+        this.error = [];
+        this.allEroors = 0;
+        this.ok = 0;
+        this.$location = $location;
+        this.passwordRequire = 0;
+        this.emailRequire=0;
+        this.button = 0;
+        this.loading = false;
+this.created()
+    }
+    created(){
+      if(sessionStorage.getItem('token') != null){
+        this.$location.path('/home')
+      }
     }
     signIn(value){
         this.error = []
@@ -37,7 +43,7 @@ class LoginController {
             this.ok = 1;
             let it = this;
             this.$timeout(function () {
-                it.$location.path('/registration')
+                it.$location.path('/home')
             },1000)
         })
         .catch((response)=> {

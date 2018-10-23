@@ -1,0 +1,56 @@
+<div>
+  <div class="form-modal">
+    <!--<div class="modallogin" ng-style="{width:vm.oks==0?'0':'100vw',-->
+                    <!--fontSize:vm.oks==0?'0':'50px',-->
+                    <!--height:vm.oks==0?'0':'100vh'}">-->
+      <!--<div>-->
+        <!--Created ad-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="container-form-modal" >
+      <div class="close" ng-click="vm.closes()">back</div>
+      <div style="width: 100%" ng-if="vm.token == true?fasle:true">
+        <h3>
+          Create an ad
+        </h3>
+        <div class="field">
+          <label for="Street">Street</label>
+          <input ng-model="vm.street" ng-style="{background: vm.streetRequire == 1? 'red':''}" id="Street" type="text"/>
+        </div>
+        <div class="field">
+          <div>
+            <label for="range">Star</label>
+            {{vm.star}}
+          </div>
+          <input id="range" ng-model="vm.star" min="1" max="5" type="range" value="1">
+        </div>
+        <div class="field">
+          <label for="link">Url</label>
+          <input ng-model="vm.link" ng-style="{background: vm.linkRequire == 1? 'red':''}" id="link" type="text"/>
+        </div>
+        <!--<form id="uploadForm" class="field uploadPhoto" >-->
+          <!--<label>-->
+            <!--<input type="file" name="UploadForm[imageFile]" ng-change="vm.retu" id="file">-->
+            <!--<span ng-if="vm.nativeLink != ''?false:true">Upload photo by ad</span>-->
+            <!--<span>-->
+              <!--{{vm.nativeLink}}-->
+            <!--</span>-->
+          <!--</label>-->
+        <!--</form>-->
+        <button ng-click="vm.create()" ng-style="{background:vm.button == 0?'royalblue':'red'}">
+          <span ng-show="vm.loading == true?false:true">Create</span>
+          <!--<div class="spinnerLoginRagistration"-->
+               <!--ng-show="vm.loading == true?true:false"></div>-->
+        </button>
+      </div>
+      <div class="modalIn" ng-if="vm.token != true?false:true">
+        <h3>This is important!</h3>
+        <p>Only registered users can create an ad!</p>
+        <div>
+          <a href="#" style="margin-bottom: 10px" ng-click="vm.to('login')">Sign in</a>
+          <a href="#" ng-click="vm.to('regisration')">Registration</a>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

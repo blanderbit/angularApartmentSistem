@@ -20,7 +20,7 @@ var wDelta = 120;
 // }
 
 class HomeController {
-    constructor($http,$timeout,$location,$state,$stateParams) {
+    constructor($http,$timeout,$location,$state,$stateParams,dataService) {
         'ngInject';
         this.$state = $state;
         this.$http = $http;
@@ -28,6 +28,7 @@ class HomeController {
         this.loading = false;
         this.$location = $location;
         this.$stateParams = $stateParams;
+        this.dataService = dataService;
         this.getPosts();
     }
     getPosts(){
@@ -44,7 +45,7 @@ class HomeController {
         if(arr.length == 5){
             return value
         } else {
-            return 'http://japanalytic.com/wp-content/uploads/2017/10/No-Underlined.jpg'
+            return 'https://3ie87c2dond928rt2e2zzo8o-wpengine.netdna-ssl.com/wp-content/themes/gonzo/images/no-image-featured-image.png'
         }
     }
 
@@ -58,6 +59,9 @@ class HomeController {
         // console.log(this.$state.go('/posts/',{id: value},{reload: true}))
         // console.log(this.)
         console.log(this.$location.path('/posts/'+id))
+    }
+    modal(){
+      return this.dataService.formmodal
     }
 }
 

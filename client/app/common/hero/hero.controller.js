@@ -1,7 +1,7 @@
 class HeroController {
-  constructor(dataService, $mdDialog) {
+  constructor(dataService, $mdDialog, $stateParams) {
     'ngInject';
-    this.name = 'hero';
+    this.$stateParams = $stateParams;
     this.mainArr = [];
     this.$mdDialog = $mdDialog;
     this.dataService = dataService;
@@ -35,8 +35,10 @@ class HeroController {
         inf: 'Before 25 person',
         time: data.timeBefore13.concat(data.timeAftere13)
       },
+
     ];
     this.date = null;
+    this.idOrder = this.$stateParams.id
     this.created()
   }
 
@@ -89,40 +91,46 @@ class HeroController {
   }
 
   dates(time) {
-    let date = String(this.dataService.data)
-    let hour = Number(time.substr(0, 2))
-    let dataClick = date.split(' ')
-    for (let i = 0; i < data.nameMonth.length; i++) {
-      if (data.nameMonth[i].month == dataClick[1]) {
-        return new Date(dataClick[3], data.nameMonth[i].number - 1, dataClick[2], hour)
+      let date = String(this.dataService.data)
+      let hour = Number(time.substr(0, 2))
+      let dataClick = date.split(' ')
+      for (let i = 0; i < data.nameMonth.length; i++) {
+          if (data.nameMonth[i].month == dataClick[1]) {
+            return new Date(dataClick[3], data.nameMonth[i].number - 1, dataClick[2], hour)
+          }
       }
-    }
   }
 
   showConfirm(ev,time,name) {
-    console.log(name)
-    let sentData = this.dates(time)
-    let obj = {
-      data: String(sentData),
-      name: name,
-      order: this.idOrder,
-      user: sessionStorage.getItem('idUser')
-    }
-    let active = event.currentTarget.classList.contains('active')
-    let count = 0
-    let comfirm = this.$mdDialog.confirm()
-      .title('you want confirm your order?')
-      .textContent('This is your data'+ JSON.stringify(obj))
-      .ariaLabel('Lucky day')
-      .targetEvent(ev)
-      .ok('True',this.sent(time,obj))
-      .cancel('Back')
-      this.$mdDialog.show(comfirm).then( () =>{
-        this.sent(time,obj,active)
-      },function(){
-      })
-  }
+      let sentData = this.dates(time)
+      let obj = {
+          data: String(sentData),
+          name: name,
+          order: this.idOrder,
+          user: sessionStorage.getItem('idUser')
+      }
+      let active = event.currentTarget.classList.contains('active')
 
+      let comfirm;
+      if (active == true) {
+          comfirm = this.comfirm('Do you want remove your order?',JSON.stringify(obj),ev)
+      } else {
+          comfirm =  this.comfirm('Do you want confirm your order?',JSON.stringify(obj),ev)
+      }
+
+      this.$mdDialog.show(comfirm).then(() => {
+          this.sent(time, obj, active)
+      })
+    }
+    comfirm(title, data,ev){
+        return this.$mdDialog.confirm()
+          .ariaLabel('Lucky day')
+          .targetEvent(ev)
+          .ok('True')
+          .cancel('Cancel')
+          .title(title)
+          .textContent('This is your data' + data)
+    }
 }
 
 export default HeroController;

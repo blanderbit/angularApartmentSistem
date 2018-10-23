@@ -1,0 +1,101 @@
+.close {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  cursor: pointer;
+}
+.close:hover {
+  color: darkred;
+}
+.modalIn{
+  position:relative;
+  width:100%;
+  text-align:center;
+}
+.modalIn div{
+  display: flex;flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalIn a {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  background: darkmagenta;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 1s;
+}
+.modalIn a:hover {
+  background: slateblue;
+}
+
+.form-modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.56);
+  z-index: 1200;
+}
+.form-modal > .container-form-modal{
+  padding: 45px;
+  width: 360px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.container-form-modal > .field{
+  width: 100%;
+}
+.field > div{
+  display: flex;
+  justify-content: space-between;
+}
+.container-form-modal input {
+  width: 100%;
+}
+.container-form-modal input[type="text"]{
+  font-family: "Roboto", sans-serif;
+  outline: 0;padding: 15px;
+  background: #f2f2f2;
+  margin: 0 0 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: all 1s;
+  border: 1px solid white;
+}
+.uploadPhoto {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+  background: slateblue;
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
+  margin: 20px 0 0 0
+}
+.uploadPhoto:hover {
+  background: rebeccapurple;
+}
+.uploadPhoto input[type="file"]{
+  display: none;
+}
+.uploadPhoto label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.uploadPhoto span {
+  line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
+}
