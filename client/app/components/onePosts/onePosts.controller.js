@@ -15,6 +15,7 @@ class OnePostsController {
     'contact phone number responsible for receiving information;',
     'details of the organization for registration of the contract.']
       this.created();
+      // this.initMap();
   }
   created(){
       this.id_post = localStorage.getItem('id_post'),
@@ -23,7 +24,7 @@ class OnePostsController {
       this.startDate = new Date();
       this.endDate = new Date();
       this.endDate.setDate(this.endDate.getDate() + 5);
-      this.dataService.data = this.startDate
+      this.dataService.data = this.startDate;
   }
   showUrlPhoto(value){
       let arr = value.split('.')

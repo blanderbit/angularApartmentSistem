@@ -1,11 +1,12 @@
 class LoginController {
-    constructor($http,$timeout,$location) {
+    constructor($http,$timeout,$location,) {
         'ngInject';
         this.emails = '';
         this.password = '';
         this.$http = $http;
         this.$timeout = $timeout;
         this.error = [];
+        this.censor =''
         this.allEroors = 0;
         this.ok = 0;
         this.$location = $location;
@@ -13,7 +14,7 @@ class LoginController {
         this.emailRequire=0;
         this.button = 0;
         this.loading = false;
-this.created()
+        this.created()
     }
     created(){
       if(sessionStorage.getItem('token') != null){
@@ -21,9 +22,12 @@ this.created()
       }
     }
     signIn(value){
-        this.error = []
+        this.error = [];
         this.valids(!this.password, 'password', "Password required");
         this.valids(!this.emails, 'email', "Email required");
+        if(this.censor == true){
+          this.error.push("You have is not censor words");
+        }
         if (this.error.length> 0){
             this.allEroors = 1;
             this.button = 1;
@@ -31,6 +35,9 @@ this.created()
             this.sent()
         }
         this.setTime()
+    }
+    validName(viewValue){
+        this.censor = viewValue.text;
     }
     sent(){
         this.$http.post('http://ec2-54-88-87-181.compute-1.amazonaws.com:8889/login',{
@@ -48,17 +55,19 @@ this.created()
         })
         .catch((response)=> {
             this.loading = false;
-            let email = response.response.data.email;
+            let email = response.data.email;
             if(email != null && Array.isArray(email)){
                 for(let i = 0; i < email.length;i++){
-                  this.error.push(email[i])
-                  this.allEroors = 1;
-                  this.emailRequire = 1;
-                  this.button = 1;
+                    console.log(email[i])
+                    this.error.push(email[i])
+                    console.log(this.error)
+                    this.allEroors = 1;
+                    this.emailRequire = 1;
+                    this.button = 1;
                 }
             }
-            if (response.response.data.error != undefined){
-                this.error.push(response.response.data.error)
+            if (response.data.error != undefined){
+                this.error.push(response.data.error)
                 this.allEroors = 1;
                 this.button = 1;
             }

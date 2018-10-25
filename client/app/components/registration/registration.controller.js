@@ -1,5 +1,5 @@
 class RegistrationController {
-  constructor($http,$timeout,$location) {
+  constructor($http,$timeout,$location,$log,$q) {
       'ngInject';;
       this.$http = $http,
       this.$timeout = $timeout,
@@ -15,6 +15,14 @@ class RegistrationController {
       this.nameRequire = 0,
       this.button = 0,
       this.loading = false
+    this.$log = $log;
+    this.$q = $q;
+    this.states = this.loadAll();
+    this.querySearch = this.querySearch;
+    this.selectedItemChange = this.selectedItemChange;
+    this.searchTextChange = this.searchTextChange;
+    this.newState = this.newState;
+
     this.created()
   }
   created(){
@@ -94,6 +102,50 @@ class RegistrationController {
           it.button = 0;
       }, 2000);
   }
+
+
+
+  newState(state) {
+    alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+  }
+
+  querySearch (query) {
+    var results = query ? this.loadAll().filter( this.createFilterFor(query) ) : this.loadAll(),
+      deferred;
+    if (self.simulateQuery) {
+      deferred = self.$q.defer();
+      this.$timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+      return deferred.promise;
+    } else {
+      return results;
+    }
+  }
+
+  searchTextChange(text) {
+    this.$log.info('Text changed to ' + text);
+  }
+
+  selectedItemChange(item) {
+    this.$log.info('Item changed to ' + JSON.stringify(item));
+  }
+
+  loadAll() {
+    return district.map( function (state) {
+      return {
+        value: String(state.name).toLowerCase(),
+        display: state.name
+      };
+    });
+  }
+
+  createFilterFor(query) {
+    var lowercaseQuery = query.toLowerCase();
+    return function filterFn(state) {
+      return (state.value.indexOf(lowercaseQuery) === 0);
+    };
+
+  }
+
 }
 
 export default RegistrationController;

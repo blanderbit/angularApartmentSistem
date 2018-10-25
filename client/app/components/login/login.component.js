@@ -6,7 +6,7 @@ let loginComponent = {
   controllerAs:'vm',
   bindings: {},
   template,
-  controller
+  controller,
 };
 
 export default loginComponent;

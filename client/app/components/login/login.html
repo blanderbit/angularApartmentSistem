@@ -1,25 +1,36 @@
 <div class="Login">
-  <div class="containerform">
-    <div class="form">
-      <form class="login-form">
-        <h3>Autorization</h3>
-        <input type="text" ng-model="vm.emails" placeholder="Email"
-               ng-style="{border:vm.emailRequire==0?'1px solid white':'1px solid red'}"/><br>
-        <input type="password" ng-model="vm.password"
-               ng-style="{border:vm.passwordRequire==0?'1px solid white':'1px solid red'}" placeholder="Password"/>
-        <button ng-click="vm.signIn()" ng-style="{background:vm.button == 0?'royalblue':'red'}">
-          <span ng-if="vm.loading == true?false:true">Login</span>
-          <!--<div class="spinnerLoginRagistration" ng-if="loading == true?true:false"></div>-->
-        </button>
-        <p class="message">
-          Not registred?
-          <a href="/registration">
-            Create account
-          </a>
-        </p>
-      </form>
+    <div class="containerform">
+        <div class="form">
+            <form class="login-form" name="Form">
+              <h3>Autorization</h3>
+              <div style="color:crimson">
+                <div ng-messages="Form.text.$error">
+                  <div ng-message="required">Email input can`t be empty</div>
+                  <div ng-message="text">{{vm.validName(Form.text.$error)}}You have is not censor words </div>
+                </div>
+                <div ng-messages="Form.password.$error">
+                  <div ng-message="required">Password input can`t be empty</div>
+                  <div ng-message="minlength">Password min charaters 8</div>
+                </div>
+              </div>
+              <br>
+              <input type="text" ng-model="vm.emails" valid-name placeholder="Email" name="text"  required
+                     ng-style="{border:vm.emailRequire==0?'1px solid white':'1px solid red'}"/><br>
+              <input type="password" ng-model="vm.password" ng-minlength="8" name="password" required
+                     ng-style="{border:vm.passwordRequire==0?'1px solid white':'1px solid red'}" placeholder="Password"/>
+              <button ng-click="vm.signIn()" ng-style="{background:vm.button == 0?'royalblue':'red'}">
+                <span ng-if="vm.loading == true?false:true">Login</span>
+                <!--<div class="spinnerLoginRagistration" ng-if="loading == true?true:false"></div>-->
+              </button>
+              <p class="message">
+                Not registred?
+                <a href="/registration">
+                  Create account
+                </a>
+              </p>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 <div class="allErrors" ng-style="{opacity:vm.allEroors==0?'0':'1'}">
   <ul>

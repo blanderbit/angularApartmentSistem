@@ -9,6 +9,34 @@
                ng-style="{border:vm.emailRequire==0?'1px solid white':'1px solid red'}"/><br>
         <input type="password" ng-model="vm.password"
                ng-style="{border:vm.passwordRequire==0?'1px solid white':'1px solid red'}" placeholder="Password"/>
+
+        <!--<div layout="column" >-->
+          <!--<md-content class="md-padding">-->
+            <form ng-submit="$event.preventDefault()">
+              <md-autocomplete
+                md-no-cache="vm.noCache"
+                md-selected-item="vm.selectedItem"
+                md-search-text-change="vm.searchTextChange(vm.searchText)"
+                md-search-text="vm.searchText"
+                md-selected-item-change="vm.selectedItemChange(item)"
+                md-items="item in vm.querySearch(vm.searchText)"
+                md-item-text="item.display"
+                md-min-length="0"
+
+                placeholder="Choose your district">
+                <md-item-template >
+                  <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.value}}</span>
+                </md-item-template>
+              </md-autocomplete>
+              <br/>
+            </form>
+          <!--</md-content>-->
+        <!--</div>-->
+
+
+
+
+
         <button ng-click="vm.create()" ng-style="{background:vm.button == 0?'royalblue':'red'}">
           <span ng-if="vm.loading == true?false:true">Login</span>
           <!--<div class="spinnerLoginRagistration" ng-if="loading == true?true:false"></div>-->
